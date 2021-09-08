@@ -6,7 +6,7 @@ namespace TestLogger
     {
         private static void Main(string[] args)
         {
-            Starter starter = new ();
+            var starter = new Starter();
 
             starter.Run();
         }

@@ -3,18 +3,11 @@ using System.Text;
 
 namespace TestLogger
 {
-    public enum LogLvl
-    {
-        Info,
-        Warning,
-        Error
-    }
-
     public sealed class Logger
     {
-        private static readonly StringBuilder _log = new ();
+        private static readonly Logger _instance = new Logger();
 
-        private static readonly Logger _instance = new ();
+        private readonly StringBuilder _log = new StringBuilder();
 
         static Logger()
         {
@@ -26,11 +19,11 @@ namespace TestLogger
 
         public static Logger Instance => _instance;
 
-        public static string Log => _log.ToString();
+        public string Log => _log.ToString();
 
-        public void LogEvent(LogLvl lvl, string msg)
+        public void LogEvent(LogLevel logLevel, string msg)
         {
-            var logMsg = $"{DateTime.Now}: {lvl}: {msg}";
+            var logMsg = $"{DateTime.UtcNow}: {logLevel}: {msg}";
 
             Console.WriteLine(logMsg);
             _log.AppendLine(logMsg);
@@ -38,17 +31,17 @@ namespace TestLogger
 
         public void LogEventInfo(string msg)
         {
-            LogEvent(LogLvl.Info, msg);
+            LogEvent(LogLevel.Info, msg);
         }
 
         public void LogEventWarning(string msg)
         {
-            LogEvent(LogLvl.Warning, msg);
+            LogEvent(LogLevel.Warning, msg);
         }
 
         public void LogEventError(string msg)
         {
-            LogEvent(LogLvl.Error, msg);
+            LogEvent(LogLevel.Error, msg);
         }
     }
 }

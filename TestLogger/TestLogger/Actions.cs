@@ -20,7 +20,7 @@ namespace TestLogger
 
         public Result ErrorLog()
         {
-            return new Result() { Status = false, ErrMsg = "I broke a logic." };
+            return new Result() { ErrorMsg = "I broke a logic." };
         }
     }
 }

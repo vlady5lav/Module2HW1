@@ -6,6 +6,6 @@ namespace TestLogger
     {
         public bool Status { get; set; }
 
-        public string ErrMsg { get; set; }
+        public string ErrorMsg { get; set; }
     }
 }
