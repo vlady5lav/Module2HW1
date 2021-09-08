@@ -1,11 +1,14 @@
 ﻿using System;
 
-namespace StyleCop
+namespace TestLogger
 {
     public class Program
     {
         private static void Main(string[] args)
         {
+            Starter starter = new ();
+
+            starter.Run();
         }
     }
 }
